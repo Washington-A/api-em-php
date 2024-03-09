@@ -22,8 +22,8 @@ include('conexao.php');
 
         <tbody>
             <?php
-            $sql = "SELECT * FROM usuario";
-            $retorno = $mysqli->query($sql) or die("Erro na consulta!".$mysqli->error);
+            $sql = "SELECT * FROM usuarios";
+            $retorno = $connection->query($sql) or die("Erro na consulta!".$mysqli->error);
 
             if($retorno->num_rows > 0){
                 while($usuario = $retorno->fetch_assoc()){

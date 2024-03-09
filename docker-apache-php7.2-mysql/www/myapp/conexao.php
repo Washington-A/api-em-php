@@ -1,5 +1,5 @@
 <?php
-$host = 'mysql-container';
+$host = 'docker-apache-php72-mysql-db-1';
 $user = 'root';
 $password = 'root';
 $database = 'devbuild';
