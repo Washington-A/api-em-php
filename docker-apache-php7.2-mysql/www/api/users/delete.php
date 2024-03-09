@@ -1,18 +1,17 @@
 <?php
 
-if ($endereco == '' && $param == '') { echo json_encode(['ERRO' => 'Caminho não encontrado!']); exit; }
+if ($param == '') { echo json_encode(['ERRO' => "É necessário informar um id de user."]); exit; }
 
-if ($endereco == 'delete' && $param == '') { echo json_encode(['ERRO' => "É necessário informar um cliente."]); exit; }
+if ($param < 1) { echo json_encode(['ERRO' => "É necessário informar um id de user."]); exit; }
 
-if ($endereco == 'delete' && $param != '') {
-
+if ($param != '') {
     $db = DB::connect();
-    $rs = $db->prepare("DELETE FROM users WHERE id={$param}");
+    $rs = $db->prepare("DELETE FROM usuarios WHERE id={$param}");
     $exec = $rs->execute();
 
-    if ($exec) {
-        echo json_encode(["dados" => 'Dados foram excluidos com sucesso.']);
+    if ($exec && $rs->rowCount() > 0) {
+        echo json_encode(["dados" => 'Dados foram excluídos com sucesso.']);
     } else {
-        echo json_encode(["dados" => 'Houve algum erro ao excluir os dados.']);
+        echo json_encode(["dados" => 'Houve algum erro ao excluir os dados ou o ID não existe.']);
     }
 }

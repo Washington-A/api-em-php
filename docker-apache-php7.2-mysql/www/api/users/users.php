@@ -17,6 +17,6 @@
         include_once "put.php";
     }
 
-    if ($method == "POST" && isset($_POST['_method']) && $_POST['_method'] == "DELETE") {
+    if ($method == 'DELETE') {
         include_once "delete.php";
     }

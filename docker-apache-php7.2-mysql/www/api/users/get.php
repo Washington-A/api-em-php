@@ -1,6 +1,6 @@
 <?php
 #echo"entroou no get";
-if ($param < 1 || !is_numeric($param)) { echo json_encode(['ERRO' => 'Caminho não encontrado!']); exit; }
+if ($param < 1 || !is_numeric($param)) { echo json_encode(['ERRO' => 'Caminho inválido!']); exit; }
 
 if ($param == '') {
     $db = DB::connect();
