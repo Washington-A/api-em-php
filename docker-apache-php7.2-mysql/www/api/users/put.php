@@ -1,35 +1,30 @@
 <?php
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
 
-if ($endereco == '' && $param == '') { echo json_encode(['ERRO' => 'Caminho não encontrado!']); exit; }
+if ($param == '') { echo json_encode(['ERRO' => "É necessário informar um id de user."]); exit; }
 
-if ($endereco == 'update' && $param == '') { echo json_encode(['ERRO' => "É necessário informar um cliente."]); exit; }
+if ($param != '' && is_numeric($param) && $param > 0) {
 
-if ($endereco == 'update' && $param != '') {
+    $sql = "UPDATE usuarios SET nome = ? WHERE id = ?;";
 
-    array_shift($_POST);
+    $values = [];
 
-    $sql = "UPDATE users SET ";
-
-    $contador = 1;
-    foreach (array_keys($_POST) as $indice) {
-        if (count($_POST) > $contador) {
-            $sql .= "{$indice} = '{$_POST[$indice]}', ";
-        } else {
-            $sql .= "{$indice} = '{$_POST[$indice]}' ";
-        }
-        $contador++;
+    foreach ($data as $indice => $valor) {
+        $values[] = $valor; // Adiciona o valor atual ao array $values
     }
-
-    $sql .= "WHERE id={$param}";
+    $name = $values[0];
 
     $db = DB::connect();
     $rs = $db->prepare($sql);
-    $exec = $rs->execute();
+    $exec = $rs->execute([$name, $param]);
 
     if ($exec) {
         echo json_encode(["dados" => 'Dados atualizados com sucesso.']);
     } else {
         echo json_encode(["dados" => 'Houve erro ao atualizar dados.']);
     }
-
+} else {
+    echo json_encode(["dados" => 'ID inválido.']);
 }
+

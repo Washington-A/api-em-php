@@ -13,7 +13,7 @@
         include_once "post.php";
     }
 
-    if ($method == "POST" && isset($_POST['_method']) && $_POST['_method'] == "PUT") {
+    if ($method == 'PUT') {
         include_once "put.php";
     }
 
