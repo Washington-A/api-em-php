@@ -7,10 +7,13 @@ services:
       - "4500:80"
     volumes:
       - ./www:/app
+      - ./apache-config:/etc/apache2/conf-available
+    environment:
+      ALLOW_OVERRIDE: "On"
 
   db:
     image: mysql
-    command: ['--default-authentication-plugin=mysql_native_password','--character-set-server=utf8mb4', '--collation-server=utf8mb4_general_ci']
+    command: [ '--default-authentication-plugin=mysql_native_password','--character-set-server=utf8mb4', '--collation-server=utf8mb4_general_ci' ]
     restart: always
     environment:
       MYSQL_DATABASE: devbuild

@@ -5,4 +5,4 @@ CREATE TABLE IF NOT EXISTS usuarios (
     nome VARCHAR(255) NOT NULL
 );
 
-INSERT INTO usuarios (nome) VALUES ('Evandro Gomes'), ('Romilda Vane');
+INSERT INTO usuarios (nome) VALUES ('Evandro Gomes'), ('Romilda Vane') , ('Maica Zilda');
