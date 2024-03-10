@@ -27,9 +27,6 @@ if (isset($path[2])) {
 } else {
     $param = '';
 }
-#var_dump($endereco);#user
-#var_dump($param);#id
-#echo "saindo do index";
 
 $method = $_SERVER['REQUEST_METHOD'];
 if ($api == 'api' && $endereco == 'users') {
