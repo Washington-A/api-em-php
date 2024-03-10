@@ -2,29 +2,29 @@
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);
 
-if ($param == '') { echo json_encode(['ERRO' => "É necessário informar um id de user."]); exit; }
+if ($param == '') {
+    http_response_code(400);
+    echo json_encode(['ERRO' => "É necessário informar um id de user."]); exit;
+}
 
-if ($param != '' && is_numeric($param) && $param > 0) {
+if (is_numeric($param) && $param > 0 && isset($data['nome'])) {
 
     $sql = "UPDATE usuarios SET nome = ? WHERE id = ?;";
 
-    $values = [];
-
-    foreach ($data as $indice => $valor) {
-        $values[] = $valor; // Adiciona o valor atual ao array $values
-    }
-    $name = $values[0];
+    $name = $data['nome'];
 
     $db = DB::connect();
     $rs = $db->prepare($sql);
     $exec = $rs->execute([$name, $param]);
 
-    if ($exec) {
+    if ($exec && $rs->rowCount() > 0) {
         echo json_encode(["dados" => 'Dados atualizados com sucesso.']);
     } else {
+        http_response_code(500);
         echo json_encode(["dados" => 'Houve erro ao atualizar dados.']);
     }
 } else {
-    echo json_encode(["dados" => 'ID inválido.']);
+    http_response_code(400);
+    echo json_encode(["dados" => 'ID ou corpo da requisição inválido.']);
 }
 
