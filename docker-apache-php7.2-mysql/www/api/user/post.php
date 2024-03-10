@@ -3,7 +3,7 @@
 if ($endereco == '' && $param == '') { echo json_encode(['ERRO' => 'Caminho não encontrado!']); exit; }
 
 if ($endereco == 'adiciona' && $param == '') {
-    $sql = "INSERT INTO users (";
+    $sql = "INSERT INTO user (";
     $contador = 1;
     foreach (array_keys($_POST) as $indice) {
         if (count($_POST) > $contador) {

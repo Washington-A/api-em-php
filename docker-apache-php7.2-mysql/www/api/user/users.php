@@ -1,6 +1,6 @@
 <?php
 
-#var_dump($endereco);#users
+#var_dump($endereco);#user
 #var_dump($param);#id
 #var_dump($method);#metodo
 

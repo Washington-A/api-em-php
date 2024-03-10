@@ -27,13 +27,13 @@ if (isset($path[2])) {
 } else {
     $param = '';
 }
-#var_dump($endereco);#users
+#var_dump($endereco);#user
 #var_dump($param);#id
-
 #echo "saindo do index";
+
 $method = $_SERVER['REQUEST_METHOD'];
 if ($api == 'api' && $endereco == 'users') {
     include_once "classes/db.class.php";
-    include_once "api/users/users.php";
+    include_once "api/user/users.php";
 }
 

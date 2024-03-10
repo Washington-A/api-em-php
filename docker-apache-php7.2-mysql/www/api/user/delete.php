@@ -2,18 +2,18 @@
 
 if ($param == '' || $param < 1) {
     http_response_code(400);
-    echo json_encode(['erro' => "É necessário informar um id válido."]);
+    echo json_encode(['erro' => "ID inválido."]);
     exit;
 }
 
 if ($param != '') {
     try {
-    $db = DB::connect();
-    $rs = $db->prepare("DELETE FROM usuarios WHERE id={$param}");
-    $exec = $rs->execute();
+        $db = DB::connect();
+        $rs = $db->prepare("DELETE FROM usuarios WHERE id={$param}");
+        $exec = $rs->execute();
     } catch (PDOException $e) {
         http_response_code(500);
-        echo json_encode(["erro" => 'Erro: '. $e->getMessage()]);
+        echo json_encode(["erro" => 'Erro: ' . $e->getMessage()]);
         exit;
     }
     if ($exec && $rs->rowCount() > 0) {

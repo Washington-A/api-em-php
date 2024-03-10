@@ -4,7 +4,7 @@ $data = json_decode($json, true);
 
 if ($param == '') {
     http_response_code(400);
-    echo json_encode(['ERRO' => "É necessário informar um id de user."]); exit;
+    echo json_encode(['erro' => "ID não inserido."]); exit;
 }
 
 if (is_numeric($param) && $param > 0 && isset($data['nome'])) {
@@ -18,13 +18,13 @@ if (is_numeric($param) && $param > 0 && isset($data['nome'])) {
     $exec = $rs->execute([$name, $param]);
 
     if ($exec && $rs->rowCount() > 0) {
-        echo json_encode(["dados" => 'Dados atualizados com sucesso.']);
+        echo json_encode(["mensagem" => 'Dados atualizados com sucesso.']);
     } else {
         http_response_code(500);
-        echo json_encode(["dados" => 'Houve erro ao atualizar dados.']);
+        echo json_encode(["erro" => 'Houve erro ao atualizar dados.']);
     }
 } else {
     http_response_code(400);
-    echo json_encode(["dados" => 'ID ou corpo da requisição inválido.']);
+    echo json_encode(["erro" => 'ID ou corpo da requisição inválido.']);
 }
 
