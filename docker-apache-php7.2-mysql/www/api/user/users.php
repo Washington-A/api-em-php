@@ -4,7 +4,7 @@ if ($method == 'GET') {
     include_once "get.php";
 }
 
-if ($method == "POST" && !isset($_POST['_method'])) {
+if ($method == 'POST') {
     include_once "post.php";
 }
 
