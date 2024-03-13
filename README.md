@@ -9,6 +9,13 @@
 
 ### Este é um projeto desenvolvido em PHP7.2, para demonstrar a implementação de um CRUD (Create, Read, Update, Delete) de usuários em uma API utilizando Docker.
 
+- [Requisitos](#requisitos)
+- [Testando a API](#testando-a-api)
+- [Referências](#referências)
+- [Licença](#licença)
+- [Informações do Autor](#informações-do-autor)
+
+
 ## Requisitos:
 
 + Docker instalado e configurado (⚠️Necessário WSL 2.0, ver documentação abaixo)
@@ -47,6 +54,27 @@ docker-compose start
 docker-compose stop
 
 ```
+
+#### Insira seus projetos na pasta www.
+
+## Acesso Localhost
+
+Para acessar a aplicação, abra o seguinte URL em seu navegador:
+
+http://localhost:4500/api
+
+
+## Acesso ao phpMyAdmin
+
+Para gerenciar o banco de dados, você pode usar o phpMyAdmin. Acesse o seguinte URL em seu navegador:
+
+http://localhost:8080
+
+
+**Faça login com as seguintes credenciais:**
+
+- **Usuário**: root
+- **Senha**: root**
 
 # Testando a API:
 
