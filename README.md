@@ -32,6 +32,7 @@ git clone https://github.com/Washington-A/api-em-php.git
 ```
 + Abra o Docker Desktop
 + Em um editor de código, acesse o diretório onde o projeto foi salvo
++ No terminal mude para o diretório docker-apache-php7.2-mysql
 
 ## Criar e levantar os containers
 ```
@@ -47,15 +48,6 @@ docker-compose start
 docker-compose stop
 ```
 
-#### Insira seus projetos na pasta www.
-
-## Acesso Localhost
-
-Para acessar a aplicação, abra o seguinte URL em seu navegador:
-
-http://localhost:4500/api
-
-
 ## Acesso ao phpMyAdmin
 
 Para gerenciar o banco de dados, você pode usar o phpMyAdmin. Acesse o seguinte URL em seu navegador:
@@ -66,7 +58,7 @@ http://localhost:8080
 **Faça login com as seguintes credenciais:**
 
 - **Usuário**: root
-- **Senha**: root**
+- **Senha**: root
 
 # Testando a API:
 
